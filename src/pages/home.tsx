@@ -8,6 +8,13 @@ function HomePage()
 {
     let a: number = 0
 
+    const color_fields =
+        {
+        red: { id: 'red', type: 'number' },
+        green: { id: 'green', type: 'number' },
+        blue: { id: 'blue', type: 'number' }
+        }
+
     function example_handler()
     {
         console.log("Example Button Component Pressed")
@@ -88,13 +95,10 @@ function HomePage()
                 <h3>count: {count}, a: {a}</h3>
                 <MyDivisionLine/>
 
-                <MyForm fields={{
-                    red: { id: 'red', type: 'number' },
-                    green: { id: 'green', type: 'number' },
-                    blue: { id: 'blue', type: 'number' }
-                }}
+                <MyForm fields={color_fields}
                         onsubmit={update_color}
                         button_label={'Change Color'}
+                        initial_values={null}
                 />
                     <text style={{color: string_color, fontWeight:"bold"}}>
                         DYNAMIC COLOR

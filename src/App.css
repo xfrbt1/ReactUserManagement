@@ -131,10 +131,31 @@
   background-color: var(--cards-color);
   transition: 1s background-color;
 }
-
 .my_user_card:hover {
   background-color: white;
 }
+
+.my_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.my_form_row{
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+.my_form_row text{
+  align-self: flex-start;
+}
+.my_form_row input{
+  align-self: flex-end;
+}
+.my_form_row:not(:last-child){
+  padding-bottom: 10px;
+}
+
 
 @keyframes App-logo-spin {
   from {

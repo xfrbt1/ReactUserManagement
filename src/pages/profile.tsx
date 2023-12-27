@@ -12,6 +12,15 @@ function ProfilePage()
 
     const [edit, set_edit_mode] = useState(false);
 
+    const profile_fields =
+        {
+        username: {id: 'username', type: 'text'},
+        email: {id: 'email', type: 'text'},
+        name: {id: 'name', type: 'text'},
+        surname: {id: 'surname', type: 'text'},
+        phone_number: {id: 'phone_number', type: 'text'},
+        group_id: {id: 'group_id', type: 'number'},
+        }
 
     useEffect(() =>
     {
@@ -53,6 +62,21 @@ function ProfilePage()
         }
     }
 
+    const create_initial_object = (profile_fields: Record<string, any>, json_data: Record<string, any>) =>
+    {
+        const result: Record<string, any> = {}
+
+        for (const key in profile_fields)
+        {
+            if (profile_fields.hasOwnProperty(key) && json_data.hasOwnProperty(key))
+            {
+                result[key] = json_data[key]
+            }
+        }
+        console.log(result)
+        return result;
+    }
+
 
     return (
         <div className="my_body">
@@ -68,16 +92,16 @@ function ProfilePage()
                             </h1>
 
                         <MyForm
-                            fields={{
-                                username: {id: 'username', type: 'text'},
-                                email: {id: 'email', type: 'text'},
-                                name: {id: 'name', type: 'text'},
-                                surname: {id: 'surname', type: 'text'},
-                                phone_number: {id: 'phone_number', type: 'text'},
-                                group_id: {id: 'group_id', type: 'number'},
-                                    }}
+                            fields={profile_fields}
                             onsubmit={handle_update}
                             button_label={"Edit"}
+                            initial_values=
+                                {
+                            json_data
+                                ?
+                                create_initial_object(profile_fields, json_data)
+                                : null
+                                }
                         />
                             <MyButton label={"Profile"} onclick={() => set_edit_mode(false)}/>
                         </div>

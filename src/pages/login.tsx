@@ -6,7 +6,11 @@ import {send_login_request} from "../requests/login_page_api";
 
 function LoginPage()
 {
-
+    const login_fields =
+        {
+        login: { id: 'login', type: 'text' },
+        password: { id: 'password', type: 'password' }
+        }
 
     async function HandleLoginFormSubmit (form_data: Record<string, string>)
     {
@@ -37,12 +41,10 @@ function LoginPage()
 
             <h1 style={{ color: 'black', textAlign: "center" }}>Enter your credentials</h1>
 
-            <MyForm fields={{
-                login: { id: 'login', type: 'text' },
-                password: { id: 'password', type: 'password' },
-            }}
+            <MyForm fields={login_fields}
                     onsubmit={HandleLoginFormSubmit}
                     button_label={"Next"}
+                    initial_values={null}
             />
 
             <Link to="/signup" className="my_ref">New? Sign Up</Link><br/><br/>
