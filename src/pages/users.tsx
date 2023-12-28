@@ -8,11 +8,10 @@ import {send_get_users_request} from '../requests/users_page_api'
 
 const query_params_form_fields =
     {
-        limit: {id: 'limit', type: 'number'},
-        order_by: {id: 'order_by', type: 'text'},
-        sort_by: {id: 'sort_by', type: 'text'},
-        filter_by_name: {id: 'filter_by_name', type: 'text'},
-
+        limit: 'number',
+        order_by: 'text',
+        sort_by: 'text',
+        filter_by_name: 'text'
     }
 
 const query_initial_values =
@@ -20,7 +19,7 @@ const query_initial_values =
         limit: 10,
         order_by: 'ASC',
         sort_by: 'created_at',
-        filter_by_name: '',
+        filter_by_name: ''
     }
 
 function UsersPage()
@@ -30,6 +29,7 @@ function UsersPage()
     const [users_data, set_user_data_array] = useState<Record<string, string>[] | null>(null)
 
     const [current_page, set_page] = useState<number>(1)
+    const [current_form_data, set_form_data] = useState<Record<string, any>>({})
 
     if (!is_token)
     {
@@ -44,15 +44,15 @@ function UsersPage()
         }
     }
 
+    const handle_form_data_change = (form_data: Record<string, string>) =>
+    {
+        set_form_data(form_data)
+    }
+
     const handle_query_form_submit = async (query_form_data: Record<string, any>) =>
     {
         try
         {
-            if (current_page > 0)
-            {
-                query_form_data["page"] = current_page
-            }
-
             const response = await send_get_users_request(query_form_data)
 
             if (response.status === 200)
@@ -67,18 +67,20 @@ function UsersPage()
         }
     }
 
-    const form_ref = useRef()
+    const handle_page_change = async (num: number) =>
+    {
+        let current_page_value = current_page
+        if (current_page_value > 0 && current_page_value + num > 0)
+        {
+            current_page_value = current_page_value + num
+        }
+        let form_data = current_form_data
+        set_page(current_page_value)
+        form_data["page"] = current_page_value
+        console.log(form_data)
+        await handle_query_form_submit(form_data)
+    }
 
-    const handle_prev_page = () =>
-    {
-        set_page(prevState => prevState - 1)
-        console.log(current_page)
-    }
-    const handle_next_page = () =>
-    {
-        set_page(prevState => prevState + 1)
-        console.log(current_page)
-    }
 
 
     return (
@@ -87,20 +89,19 @@ function UsersPage()
                 <h1 style={{color: 'black', textAlign: "center"}}>
                     Users
                 </h1>
-                <MyForm
-                    fields={query_params_form_fields}
-                    onsubmit={handle_query_form_submit}
-                    initial_values={query_initial_values}
-                    button_label={"Filter"}
-                />
+                <MyForm fields={query_params_form_fields}
+                        on_submit={handle_query_form_submit}
+                        button_label={"Filter"}
+                        initial_values={query_initial_values}
+                        on_form_data_change={handle_form_data_change} />
                 {users_data
                     ?
                     (
                         <div>
                             {users_data.map(user => <MyUserCard data={user} />)}
-                            <MyButton label={"prev"} onclick={handle_prev_page}/>
+                            <MyButton label={"prev"} onclick={() => handle_page_change(-1)}/>
                             <text style={{fontWeight:'bold'}}> {current_page} </text>
-                            <MyButton label={"next"} onclick={handle_next_page}/>
+                            <MyButton label={"next"} onclick={() => handle_page_change(1)}/>
                         </div>
                     )
                     :

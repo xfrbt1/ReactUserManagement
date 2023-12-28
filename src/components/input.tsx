@@ -6,10 +6,10 @@ interface MyInputProps
     type: string
     placeholder: string
     value:string
-    onchange: (event: React.ChangeEvent<HTMLInputElement>)=>void
+    on_change: (event: React.ChangeEvent<HTMLInputElement>)=>void
 }
 
-const MyInput: React.FC<MyInputProps> = ({id, type, value, placeholder, onchange}) =>
+const MyInput: React.FC<MyInputProps> = ({id, type, value, placeholder, on_change}) =>
 {
     return (
         <input
@@ -19,7 +19,7 @@ const MyInput: React.FC<MyInputProps> = ({id, type, value, placeholder, onchange
             type={type}
             placeholder={placeholder}
             value={value}
-            onChange={onchange}
+            onChange={on_change}
         />
     )
 }

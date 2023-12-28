@@ -5,12 +5,12 @@ import {MyForm} from "../components/form";
 import {send_signup_request} from "../requests/signup_page_api";
 
 const signup_fields = {
-    username: { id: 'username', type: 'text' },
-    email: { id: 'email', type: 'text' },
-    phone_number: { id: 'phone_number', type: 'text' },
-    name: { id: 'name', type: 'text' },
-    surname: { id: 'surname', type: 'text' },
-    password: { id: 'password', type: 'password' },
+    username: 'text' ,
+    email: 'text',
+    phone_number: 'text',
+    name: 'text',
+    surname: 'text',
+    password: 'password'
 }
 
 function SignupPage()
@@ -56,7 +56,7 @@ function SignupPage()
                 <h1 style={{ color: 'black', textAlign: "center" }}>Create account</h1>
 
                 <MyForm fields={signup_fields}
-                        onsubmit={HandleSignUpFormSubmit}
+                        on_submit={HandleSignUpFormSubmit}
                         button_label={"Next"}
                         initial_values={null}
                 />

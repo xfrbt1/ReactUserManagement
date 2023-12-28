@@ -7,12 +7,12 @@ import {send_edit_request, send_get_user_data, send_delete_request} from "../req
 
 const profile_fields =
     {
-        username: {id: 'username', type: 'text'},
-        email: {id: 'email', type: 'text'},
-        name: {id: 'name', type: 'text'},
-        surname: {id: 'surname', type: 'text'},
-        phone_number: {id: 'phone_number', type: 'text'},
-        group_id: {id: 'group_id', type: 'number'},
+        username: 'text',
+        email: 'text',
+        name: 'text',
+        surname: 'text',
+        phone_number: 'text',
+        group_id: 'number'
     }
 
 function ProfilePage()
@@ -95,7 +95,7 @@ function ProfilePage()
 
                         <MyForm
                             fields={profile_fields}
-                            onsubmit={handle_update}
+                            on_submit={handle_update}
                             button_label={"Edit"}
                             initial_values=
                                 {

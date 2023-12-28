@@ -10,9 +10,9 @@ function HomePage()
 
     const color_fields =
         {
-        red: { id: 'red', type: 'number' },
-        green: { id: 'green', type: 'number' },
-        blue: { id: 'blue', type: 'number' }
+            red: 'number',
+            green: 'number',
+            blue: 'number',
         }
 
     function example_handler()
@@ -96,7 +96,7 @@ function HomePage()
                 <MyDivisionLine/>
 
                 <MyForm fields={color_fields}
-                        onsubmit={update_color}
+                        on_submit={update_color}
                         button_label={'Change Color'}
                         initial_values={null}
                 />

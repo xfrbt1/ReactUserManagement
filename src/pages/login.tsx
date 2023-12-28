@@ -6,8 +6,8 @@ import {send_login_request} from "../requests/login_page_api";
 
 const login_fields =
     {
-        login: { id: 'login', type: 'text' },
-        password: { id: 'password', type: 'password' }
+        login: 'text',
+        password: 'password'
     }
 
 function LoginPage()
@@ -43,7 +43,7 @@ function LoginPage()
             <h1 style={{ color: 'black', textAlign: "center" }}>Enter your credentials</h1>
 
             <MyForm fields={login_fields}
-                    onsubmit={HandleLoginFormSubmit}
+                    on_submit={HandleLoginFormSubmit}
                     button_label={"Next"}
                     initial_values={null}
             />
