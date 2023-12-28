@@ -4,9 +4,13 @@ const send_get_user_data = async (set_data: Function, set_loading: Function) =>
 {
     const access_token = localStorage.getItem('access')
     const headers = {"access-token": access_token}
+    if (access_token === null)
+    {
+        window.location.href = '/login'
+    }
     try
     {
-        const response = await axios.get('http://localhost:8000/user/me', {headers});
+        const response = await axios.get('http://localhost:8000/user/me', {headers: headers});
         set_data(response.data)
     }
     catch (error)
@@ -35,7 +39,7 @@ const send_edit_request = async (form_data: Record<string, string | null>) =>
             }
         })
 
-        return await axios.patch('http://localhost:8000/user/me', form_data, {headers})
+        return await axios.patch('http://localhost:8000/user/me', form_data, {headers: headers})
     }
     catch (error)
     {
@@ -50,8 +54,7 @@ const send_delete_request = async () =>
     const headers = {"access-token": access_token}
     try
     {
-        return await axios.delete('http://localhost:8000/user/me', {headers})
-
+        return await axios.delete('http://localhost:8000/user/me', {headers: headers})
     }
     catch (error)
     {

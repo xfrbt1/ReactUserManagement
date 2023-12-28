@@ -5,26 +5,28 @@ import {MyUserCard} from "../components/usercard";
 import {MyButton} from "../components/button";
 import {send_edit_request, send_get_user_data, send_delete_request} from "../requests/profile_page_api";
 
-function ProfilePage()
-{
-    const [json_data, set_data] = useState(null);
-    const [loading, set_loading] = useState(true);
-
-    const [edit, set_edit_mode] = useState(false);
-
-    const profile_fields =
-        {
+const profile_fields =
+    {
         username: {id: 'username', type: 'text'},
         email: {id: 'email', type: 'text'},
         name: {id: 'name', type: 'text'},
         surname: {id: 'surname', type: 'text'},
         phone_number: {id: 'phone_number', type: 'text'},
         group_id: {id: 'group_id', type: 'number'},
-        }
+    }
+
+function ProfilePage()
+{
+
+    const [loading, set_loading] = useState(true);
+    const [edit, set_edit_mode] = useState(false);
+
+    const [json_data, set_data] = useState(null);
+
 
     useEffect(() =>
     {
-        send_get_user_data(set_data, set_loading);
+        send_get_user_data(set_data, set_loading)
     }, [])
 
     if (loading)

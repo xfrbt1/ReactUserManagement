@@ -3,17 +3,18 @@ import {Link} from "react-router-dom";
 import {MyForm} from "../components/form";
 
 import {send_signup_request} from "../requests/signup_page_api";
+
+const signup_fields = {
+    username: { id: 'username', type: 'text' },
+    email: { id: 'email', type: 'text' },
+    phone_number: { id: 'phone_number', type: 'text' },
+    name: { id: 'name', type: 'text' },
+    surname: { id: 'surname', type: 'text' },
+    password: { id: 'password', type: 'password' },
+}
+
 function SignupPage()
 {
-    const signup_fields = {
-        username: { id: 'username', type: 'text' },
-        email: { id: 'email', type: 'text' },
-        phone_number: { id: 'phone_number', type: 'text' },
-        name: { id: 'name', type: 'text' },
-        surname: { id: 'surname', type: 'text' },
-        password: { id: 'password', type: 'password' },
-    }
-
 
     async function HandleSignUpFormSubmit (form_data: Record<string, string>)
     {

@@ -4,13 +4,14 @@ import {Link} from "react-router-dom";
 import {MyForm} from "../components/form";
 import {send_login_request} from "../requests/login_page_api";
 
-function LoginPage()
-{
-    const login_fields =
-        {
+const login_fields =
+    {
         login: { id: 'login', type: 'text' },
         password: { id: 'password', type: 'password' }
-        }
+    }
+
+function LoginPage()
+{
 
     async function HandleLoginFormSubmit (form_data: Record<string, string>)
     {

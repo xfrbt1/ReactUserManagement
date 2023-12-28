@@ -44,7 +44,7 @@
   background-color: #d2d2d2;
   border-radius: 20px;
   width: 95vw;
-  height: 90vh;
+  min-height: 90vh;
   place-items: center;
   align-items: center;
   justify-content: center;
