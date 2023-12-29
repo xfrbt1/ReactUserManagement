@@ -61,6 +61,7 @@ function ProfilePage()
         catch (error)
         {
             console.error(error)
+            alert("incorrect values")
         }
     }
 
@@ -96,7 +97,7 @@ function ProfilePage()
                         <MyForm
                             fields={profile_fields}
                             on_submit={handle_update}
-                            button_label={"Edit"}
+                            button_label={"Submit"}
                             initial_values=
                                 {
                             json_data

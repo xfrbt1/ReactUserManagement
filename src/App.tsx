@@ -7,7 +7,7 @@ import { SignupPage } from './pages/signup'
 import { HomePage } from './pages/home'
 import { UsersPage } from './pages/users'
 import { ProfilePage } from "./pages/profile"
-
+import { UserPage} from "./pages/user";
 
 import { MyNavBar } from "./components/navbar"
 
@@ -29,6 +29,7 @@ function App()
             <Route path="/login" element={<LoginPage />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/users" element={<UsersPage />} />
+            <Route path="/user" element={<UserPage />} />
         </Routes>
 
     </div>

@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 
 import {MyForm} from "../components/form";
 import {MyUserCard} from "../components/usercard";
@@ -82,18 +82,24 @@ function UsersPage()
     }
 
 
-
     return (
         <div className="my_body">
             <div className="my_container">
-                <h1 style={{color: 'black', textAlign: "center"}}>
-                    Users
-                </h1>
-                <MyForm fields={query_params_form_fields}
-                        on_submit={handle_query_form_submit}
-                        button_label={"Filter"}
-                        initial_values={query_initial_values}
-                        on_form_data_change={handle_form_data_change} />
+                {is_token
+                ?
+                    (<div>
+                        <h1 style={{color: 'black', textAlign: "center"}}>
+                        Users
+                        </h1>
+                        <MyForm fields={query_params_form_fields}
+                            on_submit={handle_query_form_submit}
+                            button_label={"Filter"}
+                            initial_values={query_initial_values}
+                            on_form_data_change={handle_form_data_change} />
+                    </div>  )
+                : (<div></div>)
+                }
+
                 {users_data
                     ?
                     (
@@ -106,7 +112,8 @@ function UsersPage()
                     )
                     :
                     (<div></div>)
-                    }
+
+                }
             </div>
         </div>
     )

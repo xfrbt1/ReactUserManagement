@@ -107,6 +107,18 @@
   border-color: 2px solid var(--hover-color);
 }
 
+.my_search_line {
+  font-size:1.5vw;
+  width: 60vh;
+  height: 3vw;
+  border-radius:10px;
+  border: 2px solid white;
+  transition: 1s border-color;
+}
+.my_search_line:hover {
+  border-color: 2px solid var(--hover-color);
+}
+
 
 .my_ref {
   color: white;
