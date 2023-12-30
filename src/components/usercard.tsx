@@ -20,12 +20,12 @@ const MyUserCard: React.FC<CardProps> = ({data}) =>
                     Object.entries(data).map(([key, value]) =>
                         (
                             <div>
-                            <text style={{fontWeight:"bold", padding:10}}>
+                            <span style={{fontWeight:"bold", padding:10}}>
                                 {key}:
-                            </text>
-                            <text>
+                            </span>
+                            <span>
                                 {value}
-                            </text>
+                            </span>
                             </div>
                         )
                     )}

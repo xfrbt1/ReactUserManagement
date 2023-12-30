@@ -100,9 +100,9 @@ function HomePage()
                         button_label={'Change Color'}
                         initial_values={null}
                 />
-                    <text style={{color: string_color, fontWeight:"bold"}}>
+                    <span style={{color: string_color, fontWeight:"bold"}}>
                         DYNAMIC COLOR
-                    </text><br/>
+                    </span><br/>
                 <MyDivisionLine/>
 
                 <MyButton label={"Send request"} onclick={sending_request}/><text> </text>
@@ -110,9 +110,9 @@ function HomePage()
                 <br/><br/>
                 <div>
                         {Object.keys(response).map((key) => (
-                               <text style={{fontWeight:"bold"}}>
+                               <span style={{fontWeight:"bold"}}>
                                    {key}: {response[key]}
-                               <br/></text>
+                               <br/></span>
                         ))}
                 </div>
             </div>

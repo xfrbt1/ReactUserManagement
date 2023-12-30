@@ -4,9 +4,9 @@ import React from "react";
 const MyDivisionLine = () =>
 {
     return (<div>
-    <text style={{color: "white"}}>
+    <span style={{color: "white"}}>
         ____________________________________________________________________________________________
-    </text><br/><br/>
+    </span><br/><br/>
     </div>)
 }
 
