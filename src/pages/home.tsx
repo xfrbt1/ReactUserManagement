@@ -22,6 +22,8 @@ function HomePage()
     }
 
     const [count, set_count] = useState(0)
+    const [response, set_response] = useState<Record<string, string>>({})
+
     function counter_handler()
     {
         set_count((prev) => prev + 1)
@@ -55,11 +57,6 @@ function HomePage()
         console.log(string_color)
     }
 
-    interface ApiResponse {
-        [key: string]: string;
-    }
-
-    const [response, set_response] = useState<ApiResponse>({});
     const sending_request = async () =>
     {
         try
@@ -77,7 +74,7 @@ function HomePage()
             console.error('ERROR:', error);
             alert("SERVER IS NOT AVAILABLE")
         }
-    };
+    }
 
     return (
         <div className="my_body">
@@ -89,13 +86,14 @@ function HomePage()
                 </h3>
 
                 <MyDivisionLine/>
-                <MyButton label={"Add a"} onclick={example_handler}/><text> </text>
-                <MyButton label={"Add count"} onclick={counter_handler}/><text> </text>
+                <MyButton label={"Add a"} onclick={example_handler}/><span> </span>
+                <MyButton label={"Add count"} onclick={counter_handler}/><span> </span>
                 <MyButton label={"Reset count"} onclick={reset_counter}/><br/>
                 <h3>count: {count}, a: {a}</h3>
                 <MyDivisionLine/>
 
-                <MyForm fields={color_fields}
+                <MyForm
+                        fields={color_fields}
                         on_submit={update_color}
                         button_label={'Change Color'}
                         initial_values={null}
@@ -105,14 +103,15 @@ function HomePage()
                     </span><br/>
                 <MyDivisionLine/>
 
-                <MyButton label={"Send request"} onclick={sending_request}/><text> </text>
+                <MyButton label={"Send request"} onclick={sending_request}/><span> </span>
                 <MyButton label={"Reset request"} onclick={() => set_response({})}/>
                 <br/><br/>
                 <div>
                         {Object.keys(response).map((key) => (
                                <span style={{fontWeight:"bold"}}>
                                    {key}: {response[key]}
-                               <br/></span>
+                               <br/>
+                               </span>
                         ))}
                 </div>
             </div>

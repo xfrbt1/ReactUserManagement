@@ -41,23 +41,26 @@ const MyForm: React.FC<FormProps> = ({   fields,
         on_submit(form_data);
     }
 
-    return(
+    return (
         <div>
-        <form className={"my_form"} onSubmit={HandleSubmit}>
-            {Object.entries(fields).map(([key, value]) => (
-                <div className={"my_form_row"}>
-                    <text style={{fontWeight:'bold'}}>{key}:</text>
-                    <MyInput
-                        id={key}
-                        type={value}
-                        placeholder={key}
-                        value={form_data[key] || ''}
-                        on_change={(e) => HandleChange(key, e.target.value) }
-                    />
-                </div>
-                ))}
-            <button className='my_button' type="submit">{button_label}</button>
-        </form><br/>
+            <form className={"my_form"} onSubmit={HandleSubmit}>
+                {Object.entries(fields).map(([key, value]) =>
+                    (
+                    <div className={"my_form_row"}>
+                        <span style={{fontWeight:'bold'}}>{key}:</span>
+                        <MyInput
+                                key={key}
+                                id={key}
+                                type={value}
+                                placeholder={key}
+                                value={form_data[key] || ''}
+                                on_change={(e) => HandleChange(key, e.target.value) }
+                        />
+                    </div>
+                        ))}
+                    <button className='my_button' type="submit">{button_label}</button>
+                </form>
+            <br/>
         </div>
     )
 }
