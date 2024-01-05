@@ -99,7 +99,7 @@ function UserPage()
                             value={user_id}
                             placeholder={'ID'}
                             onChange={handle_user_id_input_change}/>
-                        <text> </text>
+                        <span> </span>
                         <MyButton
                             label={'Search'}
                             onclick={search_button_click}

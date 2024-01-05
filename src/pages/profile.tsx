@@ -118,7 +118,7 @@ function ProfilePage()
 
                             <MyUserCard data={json_data}/>
                             <MyButton onclick={() => set_edit_mode(true)} label={"Edit"}/>
-                            <text> </text>
+                            <span> </span>
                             <MyButton onclick={handle_delete} label={"Delete"}/>
                         </div>
                     )
