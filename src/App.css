@@ -45,7 +45,6 @@
   border-radius: 20px;
   width: 95vw;
   min-height: 90vh;
-  place-items: center;
   align-items: center;
   justify-content: center;
 }
@@ -134,17 +133,56 @@
 
 .my_user_card {
   position: relative;
-  left: 20%;
+  left: 30%;
   z-index: 1;
-  text-align: left;
   width: 60vw;
   height: 30vh;
   border-radius: 20px;
+  transition: 1s background-color;
+}
+
+.my_user_card:hover {
+  background-color: white;
+}
+
+.my-user-card-container {
+  position: relative;
+  display: flex;
+  text-align: left;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  width: 50vw;
+  height: 30vh;
   background-color: var(--cards-color);
   transition: 1s background-color;
 }
-.my_user_card:hover {
+
+.my-user-card-container:hover {
   background-color: white;
+}
+
+.user-data-container {
+  flex: 2;
+  padding-right: 10px;
+}
+
+.image-container {
+  flex: 1;
+}
+
+.user-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.data-label {
+  font-weight: bold;
+  padding: 5px;
+}
+
+.data-value {
+  padding: 5px;
 }
 
 .my_form {

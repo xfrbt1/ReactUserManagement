@@ -111,14 +111,19 @@ function ProfilePage()
                     )
                     :
                     (
-                        <div>
+                        <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}>
                             <h1 style={{color: 'black', textAlign: "center"}}>
                                 Your profile
                             </h1>
 
                             <MyUserCard data={json_data}/>
                             <MyButton onclick={() => set_edit_mode(true)} label={"Edit"}/>
-                            <span> </span>
+                            <br/>
                             <MyButton onclick={handle_delete} label={"Delete"}/>
                         </div>
                     )

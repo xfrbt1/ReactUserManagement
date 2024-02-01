@@ -103,12 +103,19 @@ function UsersPage()
                 {users_data
                     ?
                     (
-                        <div>
+                        <div><div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center"
+                        }}>
                             {users_data.map(user => <MyUserCard data={user} />)}
-                            <MyButton label={"prev"} onclick={() => handle_page_change(-1)}/>
-                            <span style={{fontWeight:'bold'}}> {current_page} </span>
-                            <MyButton label={"next"} onclick={() => handle_page_change(1)}/>
                         </div>
+                        <div>
+                    <MyButton label={"prev"} onclick={() => handle_page_change(-1)}/>
+                    <span style={{fontWeight:'bold'}}> {current_page} </span>
+                    <MyButton label={"next"} onclick={() => handle_page_change(1)}/>
+                        </div></div>
                     )
                     :
                     (<div></div>)
