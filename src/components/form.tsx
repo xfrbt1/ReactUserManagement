@@ -47,7 +47,6 @@ const MyForm: React.FC<FormProps> = ({   fields,
                 {Object.entries(fields).map(([key, value]) =>
                     (
                     <div className={"my_form_row"}>
-                        <span style={{fontWeight:'bold'}}>{key}:</span>
                         <MyInput
                                 key={key}
                                 id={key}

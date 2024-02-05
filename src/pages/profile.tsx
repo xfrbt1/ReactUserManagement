@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-import {MyForm} from "../components/form";
+import {MyEditForm} from "../components/editform";
 import {MyUserCard} from "../components/usercard";
 import {MyButton} from "../components/button";
 import {send_edit_request, send_get_user_data, send_delete_request} from "../requests/profile_page_api";
@@ -12,7 +12,7 @@ const profile_fields =
         name: 'text',
         surname: 'text',
         phone_number: 'text',
-        group_id: 'number'
+        group_id: 'number',
     }
 
 function ProfilePage()
@@ -50,11 +50,11 @@ function ProfilePage()
         }
     }
 
-    const handle_update = async (form_data: Record<string, string>) =>
+    const handle_update = async (form_data: Record<string, string>, file_date: File | null) =>
     {
         try
         {
-            const response = await send_edit_request(form_data)
+            const response = await send_edit_request(form_data, file_date)
             set_data(response.data)
             set_edit_mode(false)
         }
@@ -94,7 +94,7 @@ function ProfilePage()
                                 Edit your profile
                             </h1>
 
-                        <MyForm
+                            <MyEditForm
                             fields={profile_fields}
                             on_submit={handle_update}
                             button_label={"Submit"}
@@ -105,7 +105,7 @@ function ProfilePage()
                                 create_initial_object(profile_fields, json_data)
                                 : null
                                 }
-                        />
+                            />
                             <MyButton label={"Profile"} onclick={() => set_edit_mode(false)}/>
                         </div>
                     )

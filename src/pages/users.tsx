@@ -16,7 +16,7 @@ const query_params_form_fields =
 
 const query_initial_values =
     {
-        limit: 10,
+        limit: 5,
         order_by: 'ASC',
         sort_by: 'created_at',
         filter_by_name: ''

@@ -4,14 +4,15 @@ import {MyForm} from "../components/form";
 
 import {send_signup_request} from "../requests/signup_page_api";
 
-const signup_fields = {
+const signup_fields =
+    {
     username: 'text' ,
     email: 'text',
     phone_number: 'text',
     name: 'text',
     surname: 'text',
     password: 'password'
-}
+    }
 
 function SignupPage()
 {
@@ -23,8 +24,7 @@ function SignupPage()
             form_data.username === "" ||
             form_data.email === "" ||
             form_data.phone_number === "" ||
-            form_data.password === ""
-        )
+            form_data.password === "")
         {
             alert("MISSING REQUIRED FIELDS")
         }
@@ -44,6 +44,7 @@ function SignupPage()
 
             catch (error)
             {
+                console.log(error)
                 alert("INCORRECT CREDENTIALS\nSERVER ERROR\nSERVER IS NOT AVAILABLE")
             }
 
