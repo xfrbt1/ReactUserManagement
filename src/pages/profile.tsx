@@ -20,9 +20,7 @@ function ProfilePage()
 
     const [loading, set_loading] = useState(true);
     const [edit, set_edit_mode] = useState(false);
-
     const [json_data, set_data] = useState(null);
-
 
     useEffect(() =>
     {
@@ -61,7 +59,7 @@ function ProfilePage()
         catch (error)
         {
             console.error(error)
-            alert("incorrect values")
+            alert("INCORRECT VALUES")
         }
     }
 
@@ -76,8 +74,7 @@ function ProfilePage()
                 result[key] = json_data[key]
             }
         }
-        console.log(result)
-        return result;
+        return result
     }
 
 
@@ -106,7 +103,7 @@ function ProfilePage()
                                 : null
                                 }
                             />
-                            <MyButton label={"Profile"} onclick={() => set_edit_mode(false)}/>
+                            <MyButton label={"Profile"} onclick={() => set_edit_mode(false)} class_name={"my_button"}/>
                         </div>
                     )
                     :
@@ -122,9 +119,9 @@ function ProfilePage()
                             </h1>
 
                             <MyUserCard data={json_data}/>
-                            <MyButton onclick={() => set_edit_mode(true)} label={"Edit"}/>
+                            <MyButton onclick={() => set_edit_mode(true)} label={"Edit"} class_name={"my_button"}/>
                             <br/>
-                            <MyButton onclick={handle_delete} label={"Delete"}/>
+                            <MyButton onclick={handle_delete} label={"Delete"} class_name={"my_button_red"}/>
                         </div>
                     )
                 }

@@ -86,9 +86,9 @@ function HomePage()
                 </h3>
 
                 <MyDivisionLine/>
-                <MyButton label={"Add a"} onclick={example_handler}/><span> </span>
-                <MyButton label={"Add count"} onclick={counter_handler}/><span> </span>
-                <MyButton label={"Reset count"} onclick={reset_counter}/><br/>
+                <MyButton label={"Add a"} onclick={example_handler} class_name={"my_button"}/><span> </span>
+                <MyButton label={"Add count"} onclick={counter_handler} class_name={"my_button"}/><span> </span>
+                <MyButton label={"Reset count"} onclick={reset_counter} class_name={"my_button"}/><br/>
                 <h3>count: {count}, a: {a}</h3>
                 <MyDivisionLine/>
 
@@ -103,8 +103,8 @@ function HomePage()
                     </span><br/>
                 <MyDivisionLine/>
 
-                <MyButton label={"Send request"} onclick={sending_request}/><span> </span>
-                <MyButton label={"Reset request"} onclick={() => set_response({})}/>
+                <MyButton label={"Send request"} onclick={sending_request} class_name={"my_button"}/><span> </span>
+                <MyButton label={"Reset request"} onclick={() => set_response({})} class_name={"my_button"}/>
                 <br/><br/>
                 <div>
                         {Object.keys(response).map((key) => (

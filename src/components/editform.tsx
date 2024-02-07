@@ -52,6 +52,7 @@ const MyEditForm: React.FC<FormProps> = ({fields,
                 {Object.entries(fields).map(([key, value]) =>
                     (
                         <div className={"my_form_row"}>
+
                             <div><label style={{fontWeight:'bold', display: "block", position:"relative"}}>{key.replace('_', " ")}:</label></div>
 
                             <MyInput

@@ -112,9 +112,9 @@ function UsersPage()
                             {users_data.map(user => <MyUserCard data={user} />)}
                         </div>
                         <div>
-                    <MyButton label={"prev"} onclick={() => handle_page_change(-1)}/>
+                    <MyButton label={"prev"} onclick={() => handle_page_change(-1)} class_name={"my_button"}/>
                     <span style={{fontWeight:'bold'}}> {current_page} </span>
-                    <MyButton label={"next"} onclick={() => handle_page_change(1)}/>
+                    <MyButton label={"next"} onclick={() => handle_page_change(1)} class_name={"my_button"}/>
                         </div></div>
                     )
                     :

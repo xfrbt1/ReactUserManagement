@@ -103,6 +103,7 @@ function UserPage()
                         <MyButton
                             label={'Search'}
                             onclick={search_button_click}
+                            class_name={"my_button"}
                         />
                     </div>)
                     :
@@ -124,7 +125,7 @@ function UserPage()
                                     button_label={"Submit"}
                                     initial_values={user_data}
                                 />
-                                <MyButton label={"Profile"} onclick={() => set_edit_mode(false)}/>
+                                <MyButton label={"Profile"} onclick={() => set_edit_mode(false)} class_name={"my_button"}/>
                             </div>
                         )
                         :
@@ -135,7 +136,7 @@ function UserPage()
                                 User profile
                             </h1>
                             <MyUserCard data={user_data}/>
-                            <MyButton label={"Edit"} onclick={() => set_edit_mode(true)}/>
+                            <MyButton label={"Edit"} onclick={() => set_edit_mode(true)} class_name={"my_button"}/>
                         </div>)
                             :
                             (<div></div>)
