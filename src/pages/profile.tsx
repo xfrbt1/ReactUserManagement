@@ -52,6 +52,7 @@ function ProfilePage()
     {
         try
         {
+            console.log(form_data)
             const response = await send_edit_request(form_data, file_date)
             set_data(response.data)
             set_edit_mode(false)
@@ -103,7 +104,9 @@ function ProfilePage()
                                 : null
                                 }
                             />
-                            <MyButton label={"Profile"} onclick={() => set_edit_mode(false)} class_name={"my_button"}/>
+                            <MyButton label={"Profile"}
+                                      onclick={() => set_edit_mode(false)}
+                                      class_name={"my_button"}/>
                         </div>
                     )
                     :
@@ -119,9 +122,14 @@ function ProfilePage()
                             </h1>
 
                             <MyUserCard data={json_data}/>
-                            <MyButton onclick={() => set_edit_mode(true)} label={"Edit"} class_name={"my_button"}/>
+                            <MyButton
+                                onclick={() => set_edit_mode(true)}
+                                label={"Edit"}
+                                class_name={"my_button"}/>
                             <br/>
-                            <MyButton onclick={handle_delete} label={"Delete"} class_name={"my_button_red"}/>
+                            <MyButton onclick={handle_delete}
+                                      label={"Delete"}
+                                      class_name={"my_button_red"}/>
                         </div>
                     )
                 }

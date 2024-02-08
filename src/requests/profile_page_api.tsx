@@ -20,38 +20,37 @@ const send_get_user_data = async (set_data: Function, set_loading: Function) =>
 }
 
 
-const send_edit_request = async (form_data: Record<string, string>, file_data: File | null) =>
+const send_edit_request = async (form_data_json: Record<string, string>, file_data: File | null) =>
 {
     const headers =
         {
         "access-token": localStorage.getItem('access'),
-        'Content-Type': 'multipart/form-data'
+        "Content-Type": 'multipart/form-data'
         }
 
-    const request_form_data = new FormData();
+    const formData = new FormData()
 
-    Object.keys(form_data).forEach((key) =>
+    for (const key in form_data_json)
     {
-        if (form_data[key] !== '' && form_data[key] !== null)
+        if (form_data_json[key] !== '' && form_data_json[key] !== null)
         {
-            request_form_data.append(key, form_data[key])
+            formData.append(key, form_data_json[key])
+            console.log(key, " -> ", form_data_json[key])
         }
-    })
+    }
 
     if (file_data)
     {
-        request_form_data.append('file', file_data)
-        console.log("NEW FILE!")
+        formData.append('file', file_data)
+        console.log("new file")
     }
-
-    console.log(request_form_data)
 
     try
     {
         return await axios.patch(
             'http://localhost:8000/user/me',
-            request_form_data,
-            {headers: headers })
+            formData,
+            {headers: headers})
     }
     catch (error)
     {
