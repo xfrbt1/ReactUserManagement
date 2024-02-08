@@ -77,14 +77,7 @@ function HomePage()
     }
 
     return (
-        <div className="my_body">
             <div className="my_container">
-
-                <h3 style={{ color: "white" , textAlign: "left" }}>
-                    My first web-site with front-end technologies React, HTML, CSS!<br/>
-                    Some universal functionality components represented here!
-                </h3>
-
                 <MyDivisionLine/>
                 <MyButton label={"Add a"} onclick={example_handler} class_name={"my_button"}/><span> </span>
                 <MyButton label={"Add count"} onclick={counter_handler} class_name={"my_button"}/><span> </span>
@@ -115,7 +108,6 @@ function HomePage()
                         ))}
                 </div>
             </div>
-        </div>
     )
 }
 

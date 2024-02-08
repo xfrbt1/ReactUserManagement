@@ -4,6 +4,7 @@ import {MyEditForm} from "../components/editform";
 import {MyUserCard} from "../components/usercard";
 import {MyButton} from "../components/button";
 import {send_edit_request, send_get_user_data, send_delete_request} from "../requests/profile_page_api";
+import {MyDivisionLine} from "../components/divisionline";
 
 const profile_fields =
     {
@@ -48,6 +49,20 @@ function ProfilePage()
         }
     }
 
+    const create_initial_object = (profile_fields: Record<string, any>, json_data: Record<string, any>) =>
+    {
+        const result: Record<string, any> = {}
+
+        for (const key in profile_fields)
+        {
+            if (profile_fields.hasOwnProperty(key) && json_data.hasOwnProperty(key))
+            {
+                result[key] = json_data[key]
+            }
+        }
+        return result
+    }
+
     const handle_update = async (form_data: Record<string, string>, file_date: File | null) =>
     {
         try
@@ -64,30 +79,13 @@ function ProfilePage()
         }
     }
 
-    const create_initial_object = (profile_fields: Record<string, any>, json_data: Record<string, any>) =>
-    {
-        const result: Record<string, any> = {}
-
-        for (const key in profile_fields)
-        {
-            if (profile_fields.hasOwnProperty(key) && json_data.hasOwnProperty(key))
-            {
-                result[key] = json_data[key]
-            }
-        }
-        return result
-    }
-
 
     return (
-        <div className="my_body">
-            <div className="my_container">
-
+                <div className="my_container">
                 {edit
                     ?
-                    (
-                        <div>
-
+                    (<div>
+                        <MyDivisionLine/>
                             <h1 style={{color: 'black', textAlign: "center"}}>
                                 Edit your profile
                             </h1>
@@ -107,34 +105,34 @@ function ProfilePage()
                             <MyButton label={"Profile"}
                                       onclick={() => set_edit_mode(false)}
                                       class_name={"my_button"}/>
-                        </div>
+                    </div>
                     )
                     :
-                    (
-                        <div style={{
+                    (<div><MyDivisionLine/>
+                    <div style={{
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
                             justifyContent: "center"
                         }}>
                             <h1 style={{color: 'black', textAlign: "center"}}>
-                                Your profile
+                                Profile
                             </h1>
 
-                            <MyUserCard data={json_data}/>
-                            <MyButton
-                                onclick={() => set_edit_mode(true)}
-                                label={"Edit"}
-                                class_name={"my_button"}/>
-                            <br/>
-                            <MyButton onclick={handle_delete}
-                                      label={"Delete"}
-                                      class_name={"my_button_red"}/>
+                                <MyUserCard data={json_data}/>
+                                <MyButton
+                                    onclick={() => set_edit_mode(true)}
+                                    label={"Edit"}
+                                    class_name={"my_button"}/>
+                                <br/>
+                                <MyButton onclick={handle_delete}
+                                          label={"Delete"}
+                                          class_name={"my_button_red"}/>
+                    </div>
                         </div>
                     )
                 }
-            </div>
-        </div>
+                </div>
     )
 }
 

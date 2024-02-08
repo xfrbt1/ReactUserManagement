@@ -14,26 +14,44 @@ const get_user_by_id = async (id: string) =>
     }
 }
 
-const patch_user_by_id = async (id: string, form_data: Record<string, string | null>) =>
+const patch_user_by_id = async (form_data_json: Record<string, string>, file_data: File| null, user_id: string) =>
 {
-    const headers = {"access-token": localStorage.getItem('access')}
+    const headers =
+        {
+            "access-token": localStorage.getItem('access'),
+            "Content-Type": 'multipart/form-data'
+        }
+
+    const formData = new FormData()
+
+    for (const key in form_data_json)
+    {
+        if (form_data_json[key] !== '' && form_data_json[key] !== null)
+        {
+            formData.append(key, form_data_json[key])
+            console.log(key, " -> ", form_data_json[key])
+        }
+    }
+
+    if (file_data)
+    {
+        formData.append('file', file_data)
+        console.log("new file")
+    }
 
     try
     {
-        Object.keys(form_data).forEach((key) =>
-        {
-            if (form_data[key] === '')
-            {
-                form_data[key] = null
-            }
-        })
-
-        return await axios.patch('http://localhost:8000/user/'+id, form_data, {headers: headers})
+        return await axios.patch(
+            'http://localhost:8000/user/'+user_id,
+            formData,
+            {headers: headers})
     }
     catch (error)
     {
+        console.error('Error sending PATCH request:', error)
         throw error
     }
+
 }
 
 

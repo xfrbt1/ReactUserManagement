@@ -5,6 +5,7 @@ import {MyUserCard} from "../components/usercard";
 import {MyButton} from "../components/button";
 
 import {send_get_users_request} from '../requests/users_page_api'
+import {MyDivisionLine} from "../components/divisionline";
 
 const query_params_form_fields =
     {
@@ -83,8 +84,8 @@ function UsersPage()
 
 
     return (
-        <div className="my_body">
             <div className="my_container">
+                <MyDivisionLine/>
                 {is_token
                 ?
                     (<div>
@@ -122,7 +123,6 @@ function UsersPage()
 
                 }
             </div>
-        </div>
     )
 }
 

@@ -3,6 +3,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {MyForm} from "../components/form";
 import {send_login_request} from "../requests/login_page_api";
+import {MyDivisionLine} from "../components/divisionline";
 
 const login_fields =
     {
@@ -37,11 +38,9 @@ function LoginPage()
 
     return (
 
-        <div className="my_body">
         <div className="my_container">
-
+            <MyDivisionLine/>
             <h1 style={{ color: 'black', textAlign: "center" }}>Enter your credentials</h1>
-
             <MyForm fields={login_fields}
                     on_submit={HandleLoginFormSubmit}
                     button_label={"Next"}
@@ -50,8 +49,6 @@ function LoginPage()
 
             <Link to="/signup" className="my_ref">New? Sign Up</Link><br/><br/>
             <Link to="/reset-password" className="my_ref">Forgot password? Reset</Link>
-
-        </div>
         </div>
     )
 }

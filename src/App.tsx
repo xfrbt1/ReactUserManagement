@@ -19,9 +19,7 @@ function App()
 
     <div className="App">
 
-        <div>
-            {<MyNavBar/>}
-        </div>
+        {<MyNavBar/>}
 
         <Routes>
             <Route path="/home" element={<HomePage />} />

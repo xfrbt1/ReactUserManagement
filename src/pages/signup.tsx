@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {MyForm} from "../components/form";
 
 import {send_signup_request} from "../requests/signup_page_api";
+import {MyDivisionLine} from "../components/divisionline";
 
 const signup_fields =
     {
@@ -52,8 +53,8 @@ function SignupPage()
     }
 
     return (
-        <div className="my_body">
             <div className="my_container">
+                <MyDivisionLine/>
                 <h1 style={{ color: 'black', textAlign: "center" }}>Create account</h1>
 
                 <MyForm fields={signup_fields}
@@ -64,7 +65,6 @@ function SignupPage()
 
                 <Link to="/login" className="my_ref">Already in system? Log In</Link><br/><br/>
             </div>
-        </div>
     )
 }
 
