@@ -1,9 +1,11 @@
 import React from 'react';
-
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {MyForm} from "../components/form";
-import {send_login_request} from "../requests/login_page_api";
 import {MyDivisionLine} from "../components/divisionline";
+import {send_login_request} from "../requests/login_page_api";
+import user_store from "../stores/userstore"
+import {observer} from "mobx-react-lite";
+import axios from "axios";
 
 const login_fields =
     {
@@ -11,10 +13,11 @@ const login_fields =
         password: 'password'
     }
 
-function LoginPage()
+const LoginPage = observer(() =>
 {
-
-    async function HandleLoginFormSubmit (form_data: Record<string, string>)
+    const {set_new_data} = user_store
+    const navigate = useNavigate()
+    const  HandleLoginFormSubmit = async (form_data: Record<string, string>) =>
     {
         if (form_data.login === "" ||
             form_data.password === "")
@@ -22,18 +25,27 @@ function LoginPage()
             alert("MISSING REQUIRED FIELDS")
         }
         else
-
+        {
             try
             {
                 const response = await send_login_request(form_data)
-                localStorage.setItem('access', response.data.access);
-                localStorage.setItem('refresh', response.data.refresh);
-                window.location.href = "/profile"
+
+                const access = response.data.access
+                localStorage.setItem('access', access)
+                localStorage.setItem('refresh', response.data.refresh)
+
+                const headers = {"access-token": access}
+                const response_get = await axios.get
+                ('http://localhost:8000/user/me', {headers: headers})
+                console.log(response_get)
+                set_new_data(response_get.data)
+                navigate('/profile')
             }
             catch (error)
             {
                 alert("INCORRECT CREDENTIALS\nSERVER ERROR\nSERVER IS NOT AVAILABLE")
             }
+        }
     }
 
     return (
@@ -51,6 +63,6 @@ function LoginPage()
             <Link to="/reset-password" className="my_ref">Forgot password? Reset</Link>
         </div>
     )
-}
+})
 
 export {LoginPage}

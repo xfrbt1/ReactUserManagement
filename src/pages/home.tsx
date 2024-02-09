@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import {MyButton} from "../components/button";
 import {MyForm} from "../components/form";
 import {MyDivisionLine} from "../components/divisionline";
 import axios from "axios";
 
-function HomePage()
-{
+import userStore from "../stores/userstore"
+import {observer} from "mobx-react";
+import {reaction} from "mobx";
+
+
+const HomePage = () => {
     let a: number = 0
 
     const color_fields =
@@ -81,7 +85,9 @@ function HomePage()
                 <MyDivisionLine/>
                 <MyButton label={"Add a"} onclick={example_handler} class_name={"my_button"}/><span> </span>
                 <MyButton label={"Add count"} onclick={counter_handler} class_name={"my_button"}/><span> </span>
-                <MyButton label={"Reset count"} onclick={reset_counter} class_name={"my_button"}/><br/>
+                <MyButton label={"Reset count"} onclick={reset_counter} class_name={"my_button"}/><br/><span> </span>
+                <MyButton label={"check state mobx"} onclick={() => console.log(userStore.user_data_json)} class_name={"my_button"}/><br/>
+
                 <h3>count: {count}, a: {a}</h3>
                 <MyDivisionLine/>
 
@@ -110,5 +116,44 @@ function HomePage()
             </div>
     )
 }
+
+// const HomePage = () => {
+//     const [userData, setUserData] = useState(userStore.user_data_json);
+//
+//     const loadData = async () =>
+//     {
+//         await userStore.load_data();
+//     };
+//
+//     const deleteData = () =>
+//     {
+//         userStore.delete_data();
+//     };
+//
+//     useEffect(() =>
+//     {
+//         const disposer = reaction(
+//             () => userStore.user_data_json,
+//             (newUserData) => {
+//                 setUserData(newUserData);
+//             }
+//         );
+//
+//         // Clean up the reaction when the component unmounts
+//         return () => {
+//             disposer();
+//         };
+//     }, []);
+//
+//     return (
+//         <div>
+//             <button onClick={loadData}>Load Data</button>
+//             <button onClick={deleteData}>Delete Data</button>
+//             <pre>{JSON.stringify(userStore.user_data_json, null, 2)}</pre>
+//         </div>
+//     );
+// };
+
+
 
 export {HomePage}

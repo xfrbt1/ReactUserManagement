@@ -6,7 +6,8 @@ const send_get_user_data = async (set_data: Function, set_loading: Function) =>
 
     try
     {
-        const response = await axios.get('http://localhost:8000/user/me', {headers: headers});
+        const response = await axios.get
+        ('http://localhost:8000/user/me', {headers: headers});
         set_data(response.data)
     }
     catch (error)
@@ -47,10 +48,8 @@ const send_edit_request = async (form_data_json: Record<string, string>, file_da
 
     try
     {
-        return await axios.patch(
-            'http://localhost:8000/user/me',
-            formData,
-            {headers: headers})
+        return await axios.patch
+        ('http://localhost:8000/user/me', formData, {headers: headers})
     }
     catch (error)
     {
@@ -66,7 +65,8 @@ const send_delete_request = async () =>
 
     try
     {
-        return await axios.delete('http://localhost:8000/user/me', {headers: headers})
+        return await axios.delete
+        ('http://localhost:8000/user/me', {headers: headers})
     }
     catch (error)
     {

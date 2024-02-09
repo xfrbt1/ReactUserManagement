@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {MyForm} from "../components/form";
 
 import {send_signup_request} from "../requests/signup_page_api";
@@ -15,8 +15,9 @@ const signup_fields =
     password: 'password'
     }
 
-function SignupPage()
+const SignupPage = () =>
 {
+    const navigate = useNavigate()
 
     async function HandleSignUpFormSubmit (form_data: Record<string, string>)
     {
@@ -39,7 +40,7 @@ function SignupPage()
 
                 if (response.status === 200)
                 {
-                    window.location.href = '/login'
+                    navigate('/login')
                 }
             }
 
@@ -57,10 +58,11 @@ function SignupPage()
                 <MyDivisionLine/>
                 <h1 style={{ color: 'black', textAlign: "center" }}>Create account</h1>
 
-                <MyForm fields={signup_fields}
-                        on_submit={HandleSignUpFormSubmit}
-                        button_label={"Next"}
-                        initial_values={null}
+                <MyForm
+                    fields={signup_fields}
+                    on_submit={HandleSignUpFormSubmit}
+                    button_label={"Next"}
+                    initial_values={null}
                 />
 
                 <Link to="/login" className="my_ref">Already in system? Log In</Link><br/><br/>

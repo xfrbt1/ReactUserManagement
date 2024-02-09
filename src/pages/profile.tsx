@@ -3,8 +3,11 @@ import React, {useEffect, useState} from 'react';
 import {MyEditForm} from "../components/editform";
 import {MyUserCard} from "../components/usercard";
 import {MyButton} from "../components/button";
-import {send_edit_request, send_get_user_data, send_delete_request} from "../requests/profile_page_api";
 import {MyDivisionLine} from "../components/divisionline";
+import {send_edit_request, send_get_user_data, send_delete_request} from "../requests/profile_page_api";
+
+import user_store from "../stores/userstore"
+import {observer} from "mobx-react-lite";
 
 const profile_fields =
     {
@@ -16,21 +19,30 @@ const profile_fields =
         group_id: 'number',
     }
 
-function ProfilePage()
+const ProfilePage = observer(() =>
 {
 
     const [loading, set_loading] = useState(true);
     const [edit, set_edit_mode] = useState(false);
     const [json_data, set_data] = useState(null);
 
+    const {set_new_data} = user_store
+
     useEffect(() =>
     {
         send_get_user_data(set_data, set_loading)
     }, [])
 
+
+
     if (loading)
     {
         return <h1 style={{color: 'black', textAlign: "center"}}>Loading...</h1>
+    }
+
+    if (json_data)
+    {
+        set_new_data(json_data)
     }
 
      const handle_delete = async () =>
@@ -69,7 +81,7 @@ function ProfilePage()
         {
             console.log(form_data)
             const response = await send_edit_request(form_data, file_date)
-            set_data(response.data)
+            set_new_data(response.data)
             set_edit_mode(false)
         }
         catch (error)
@@ -134,6 +146,6 @@ function ProfilePage()
                 }
                 </div>
     )
-}
+})
 
 export {ProfilePage}
