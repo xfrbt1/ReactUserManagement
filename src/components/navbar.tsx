@@ -1,50 +1,3 @@
-// import React from 'react';
-// import {NavLink} from "react-router-dom";
-// import {observer} from "mobx-react-lite";
-
-// function MyNavBar ()
-// {
-//
-//     return (<nav className="navbar-container">
-//             <div className="my_logo">Innowise</div>
-//
-//             <NavLink to="/home">Home</NavLink>
-//             <NavLink to="/profile">Profile</NavLink>
-//             <NavLink to="/user">User</NavLink>
-//             <NavLink to="/users">Users</NavLink>
-//             <NavLink to="/login">{}</NavLink>
-//
-//         </nav>)
-// }
-
-// const MyNavBar = observer(() =>
-// {
-//     const { user_data_json } = user_store
-//
-//     return(
-//             <nav className="navbar-container">
-//                 <div className="my_logo">InnoNetwork</div>
-//
-//                 <NavLink to="/feed">FEED</NavLink>
-//                 <NavLink to="/pages">PAGES</NavLink>
-//                 {/*<NavLink to="/user">User</NavLink>*/}
-//                 {/*<NavLink to="/users">Users</NavLink>*/}
-//                 {/*{user_data_json.username ? (*/}
-//                 {/*    <NavLink to="/login"><span style={{fontWeight: 'bold'}}>{user_data_json.username}</span></NavLink>*/}
-//                 {/*) : (*/}
-//                 {/*    <NavLink to="/login"><span style={{fontWeight: 'bold'}}>Log In</span></NavLink>*/}
-//                 {/*)}*/}
-//                 <AccountMenu></AccountMenu>
-//                 {
-//                     user_data_json.username ?
-//                         (<span style={{fontWeight: 'bold'}}>{user_data_json.username}</span>)
-//                         :
-//                         (<></>)
-//                 }
-//             </nav>
-//     )
-// })
-
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -103,7 +56,7 @@ const MyNavBar = () =>
                             textDecoration: 'none',
                         }}
                     >
-                        Innotter
+                        InnoNetwork
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
