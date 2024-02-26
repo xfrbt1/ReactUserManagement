@@ -16,27 +16,32 @@ import AdbIcon from '@mui/icons-material/Adb';
 import {AccountMenu} from "./dropmenu";
 import user_store from "../stores/userstore"
 
-const pages = ['Pages', 'Feed'];
+
+const pages = ['News', 'Pages', 'Feed'];
 
 const MyNavBar = () =>
 {
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) =>
+    {
         setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    }
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) =>
+    {
         setAnchorElUser(event.currentTarget);
-    };
+    }
 
-    const handleCloseNavMenu = () => {
+    const handleCloseNavMenu = () =>
+    {
         setAnchorElNav(null);
-    };
+    }
 
-    const handleCloseUserMenu = () => {
+    const handleCloseUserMenu = () =>
+    {
         setAnchorElUser(null);
-    };
+    }
 
     return (
         <AppBar position="static">
@@ -89,7 +94,7 @@ const MyNavBar = () =>
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                <MenuItem key={page} onClick={() => null}>
                                     <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
